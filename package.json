@@ -1,11 +1,11 @@
 {
-  "name": "mdj-power-tools",
+  "name": "Productivity Tools",
   "version": "0.0.2",
-  "description": "Power Tools.",
+  "description": "Productivity Tools.",
   "author": "Murray Jack",
   "license": "MIT",
   "logseq": {
-    "id": "Tasks Tools",
+    "id": "Productivity Tools",
     "main": "dist/index.html"
   },
   "scripts": {

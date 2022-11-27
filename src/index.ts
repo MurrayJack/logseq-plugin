@@ -7,7 +7,7 @@ import { callSettings } from "./ui/settings";
  * main entry
  */
 async function main() {
-  logseq.App.showMsg("Welcome to Power Tools");
+  logseq.App.showMsg("Various Tools!");
 
   console.log("MDJ plugin loaded");
 
@@ -36,7 +36,8 @@ async function main() {
   });
 
   logseq.Editor.registerSlashCommand("todoist: Quick Label", async () => {
-    const { apiToken, includeToDo, includePriority } = logseq.settings!;
+    const { quickLabel, apiToken, includeToDo, includePriority } =
+      logseq.settings!;
 
     if (apiToken) {
       const api = new TodayOverdueTasks(apiToken, {
@@ -47,7 +48,7 @@ async function main() {
 
       showMessage("Fetching from Todoist...");
 
-      const data = await api.getBlocks({ filter: "@top3" }, "top3 Tasks");
+      const data = await api.getBlocks({ filter: quickLabel }, "Quick Label");
       logseq.Editor.insertBatchBlock(content!.uuid, data);
     } else {
       showError("Please enter an API token...");

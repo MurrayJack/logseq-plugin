@@ -11,6 +11,13 @@ export const callSettings = async () => {
       default: "",
     },
     {
+      key: "quickLabel",
+      title: "Quick Label",
+      description: "The label to use for the quick label method",
+      type: "string",
+      default: "@top3",
+    },
+    {
       key: "includeToDo",
       title: "Include Todo element",
       description: "Include the TODO block at the start of the item.",
