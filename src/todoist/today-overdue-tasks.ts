@@ -1,3 +1,4 @@
+import { GetTasksArgs } from "@doist/todoist-api-typescript";
 import { IBatchBlock } from "@logseq/libs/dist/LSPlugin.user";
 import { TodoIst } from "./todoist";
 
@@ -15,8 +16,8 @@ export class TodayOverdueTasks extends TodoIst {
     return this.settings.includeToDo ? "TODO " : "";
   }
 
-  async getBlocks(): Promise<IBatchBlock> {
-    const projects = await this.api.getTasks({ filter: "today | overdue" });
+  async getBlocks(args: GetTasksArgs, caption: string): Promise<IBatchBlock> {
+    const projects = await this.api.getTasks(args);
     const data: IBatchBlock[] = [];
 
     for (const results of projects) {
@@ -35,7 +36,7 @@ export class TodayOverdueTasks extends TodoIst {
     });
 
     const title: IBatchBlock = {
-      content: `${projects.length} Today and Overdue Tasks`,
+      content: `${projects.length} ${caption}`,
       children: data,
     };
 
